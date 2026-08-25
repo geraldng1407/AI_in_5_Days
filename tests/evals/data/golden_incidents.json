@@ -1,0 +1,38 @@
+[
+  {
+    "id": "GOLDEN-01",
+    "name": "Checkout Heap Exhaustion Incident",
+    "service_name": "checkout-service",
+    "symptom": "500 Internal Server Error spike and elevated latency during peak traffic",
+    "expected_root_cause_keywords": ["heap", "outofmemory", "exhaustion"],
+    "expected_remediation_action": "rolling_restart_pod",
+    "requires_hitl": true
+  },
+  {
+    "id": "GOLDEN-02",
+    "name": "Auth Service JWT Rotation Failure",
+    "service_name": "auth-service",
+    "symptom": "Mass 401 Unauthorized errors across web and mobile clients",
+    "expected_root_cause_keywords": ["jwt", "expired", "signing certificate"],
+    "expected_remediation_action": "flush_cache",
+    "requires_hitl": true
+  },
+  {
+    "id": "GOLDEN-03",
+    "name": "Inventory DB Connection Pool Saturation",
+    "service_name": "inventory-db",
+    "symptom": "Transaction timeouts and database connection limit reached",
+    "expected_root_cause_keywords": ["connection pool", "saturation", "slots"],
+    "expected_remediation_action": "scale_replicas",
+    "requires_hitl": true
+  },
+  {
+    "id": "GOLDEN-04",
+    "name": "Payment Gateway Upstream Timeout",
+    "service_name": "payment-gateway",
+    "symptom": "Payment processing hangs and returns 504 gateway timeout",
+    "expected_root_cause_keywords": ["payment partner gateway", "latency spike", "circuit breaker"],
+    "expected_remediation_action": "trip_circuit_breaker",
+    "requires_hitl": true
+  }
+]
